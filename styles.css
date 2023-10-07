@@ -8,25 +8,28 @@ body {
     justify-content: center;
     align-items: center;
     font-family: Orbitron, sans-serif;
+    background-image: url(images/background3.png);
 }
 .container {
+    margin-top: 20px;
     width: 400px;
     height: 600px;
-    background-color: rgb(217, 185, 231);
+    background-color: rgb(255, 255, 255);
     border-radius: 3%;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 20px;
     gap: 10px;
-    margin: 3px solid grey;
+    border: 3px solid rgba(170, 170, 170, 0.658);
 }
 
 
 
 #predisplay {
     width: 350px;
-    background-color: white;
+    background-color: rgb(225, 225, 225);
+    border: 2px solid rgba(196, 195, 195, 0.637);
     height: 120px;
     display: flex;
     flex-direction: column;
@@ -51,11 +54,18 @@ body {
 .buttons, .nbuttons, .obuttons {
     width: 70px;
     height: 70px;
-    background-color: violet;
+    background-color: rgb(255, 129, 175);
+    color: white;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 20px;
+    cursor: pointer;
+    box-shadow: 0px 3px 2px 2px pink;
+}
+.buttons:hover, .nbuttons:hover, .obuttons:hover {
+    box-shadow: 0px 2px 1px 1px pink;
+    
 }
 
 #clear, #delete {

@@ -9,19 +9,40 @@ let display = document.getElementById("display");
 //basic functions
 
 function add(operand1, operand2) {
-    return result = (parseFloat(operand1)+parseFloat(operand2)).toFixed(2);
+    result = parseFloat(operand1)+parseFloat(operand2);
+    if (!Number.isInteger(result)) {
+        result = result.toFixed(2);
+    };
+
+    return result;
 }
 
 function subtract(operand1, operand2) {
-    return result = (operand1-operand2).toFixed(2);
+    result = (operand1-operand2);
+    if (!Number.isInteger(result)) {
+        result = result.toFixed(2);
+    };
+
+    return result;
+
 }
 
 function multiply(operand1, operand2) {
-    result = (operand1*operand2).toFixed(2);
+    result = (operand1*operand2);
+    if (!Number.isInteger(result)) {
+        result = result.toFixed(2);
+    };
+
+    return result;
 }
 
 function divide(operand1, operand2) {
-    return result = (operand1/operand2).toFixed(2);
+    result = (operand1/operand2);
+    if (!Number.isInteger(result)) {
+        result = result.toFixed(2);
+    };
+
+    return result;
 }
 
 //clear and delete functions
@@ -105,6 +126,7 @@ function operate() {
 // buttons listeners
 
 const nbuttons = document.querySelectorAll(".nbuttons");
+const decimal = document.getElementById("kdecimal")
 
 
 
@@ -114,12 +136,14 @@ nbutton.addEventListener("click", function(x) {
         clear()
         operand1 = x.target.textContent.toString();
          displaybf.style.fontSize = "30px"
+         x.target.style.boxShadow = "0px 2px 1px 1px pink;"
          return displaybf.textContent = operand1;
     }
 
     if (!operand1) {
          operand1 = x.target.textContent.toString();
          displaybf.style.fontSize = "30px"
+         x.target.style.boxShadow = "0px 2px 1px 1px pink;"
          return displaybf.textContent = operand1;
 }
 
@@ -127,6 +151,7 @@ nbutton.addEventListener("click", function(x) {
     else if (!operator && operand1) {
         operand1 = operand1 + x.target.textContent.toString();
         displaybf.style.fontSize = "30px"
+        x.target.style.boxShadow = "0px 2px 1px 1px pink;"
         return displaybf.textContent = operand1;
     }
 
@@ -140,9 +165,21 @@ nbutton.addEventListener("click", function(x) {
         return displaybf.textContent = operand1 + operator + operand2;
     }
     
-})
+    
+})});
 
-});
+decimal.addEventListener ("click", () => {
+    if (!operand2 && !operand1.includes(".")) {
+        operand1 += ".";
+        return displaybf.textContent = operand1;
+    }
+
+    else if (operand2 && !operand2.includes(".")) {
+        operand2 += ".";
+        return displaybf.textContent = operand1 + operator + operand2;
+    }
+   
+})
 
 // operator buttons 
 
@@ -163,13 +200,18 @@ addB.addEventListener("click", () => {
     } 
  
 
-    else if (operator) {
+    else if (operator && operand2) {
         operate();
         operator = "+";
         display.textContent = "";
         display.textContent = result;
         return displaybf.textContent = operand1 + operator;
        }
+
+    else {
+        operand2 = operand1;
+        operate();
+    }
 
 });
 
@@ -188,6 +230,11 @@ subtractB.addEventListener("click", () => {
     display.textContent = result;
     return displaybf.textContent = operand1 + operator;
    }
+
+   else {
+    operand2 = operand1;
+    operate();
+}
 
 });
 
@@ -209,6 +256,11 @@ divideB.addEventListener("click", () => {
         
        }
 
+       else {
+        operand2 = operand1;
+        operate();
+    }
+
 });
 
 multiplyB.addEventListener("click", () => {
@@ -226,6 +278,11 @@ multiplyB.addEventListener("click", () => {
         display.textContent = result;
         return displaybf.textContent = operand1 + operator;
        }
+
+       else {
+        operand2 = operand1;
+        operate();
+    }
 });
 
 //equal button
@@ -254,6 +311,9 @@ document.addEventListener('keydown', (event) => {
             }
     else if (['+', '-', '*', '/'].includes(event.key)) {
         document.getElementById(`o${event.key}`).click();
+    }
+    else if (event.key === ".") {
+        document.getElementById(`kdecimal`).click();
     }
     else if (!event.key.isNaN) {
     document.getElementById(`n${event.key}`).click();
