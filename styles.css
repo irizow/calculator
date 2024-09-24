@@ -8,7 +8,7 @@ body {
     justify-content: center;
     align-items: center;
     font-family: Orbitron, sans-serif;
-    background-image: url(images/background3.png);
+    background-color: rgb(255, 248, 222);
 }
 .container {
     margin-top: 20px;
