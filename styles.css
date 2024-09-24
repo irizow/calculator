@@ -72,3 +72,26 @@ body {
     width: 160px;
 }
 
+@media screen and (max-width: 750px) {
+    .container {
+        width: 20rem;
+        height: 30rem;
+    }
+
+    #predisplay {
+        width: 75vw;
+    }
+
+    #numbers {
+        padding: 0rem;
+    }
+    .buttons, .nbuttons, .obuttons {
+        width: 3.5rem;
+        height: 3.5rem;
+    }
+    #clear, #delete {
+        width: 8rem;
+    }
+    
+}
+
